@@ -40,7 +40,7 @@ namespace Reisebüro_SC
                         Convert.ToString(dataReader["place"]),
                         Convert.ToString(dataReader["price"])
                     });
-                    listView1.Items.Add(item);
+                   // listView1.Items.Add(item);
                 }
             }
             catch (Exception ex)
@@ -150,6 +150,15 @@ namespace Reisebüro_SC
             Buchung checkout = new Buchung();
             checkout.ShowDialog(this);
         }
-        
+
+        private void Picture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
