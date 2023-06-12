@@ -1,4 +1,4 @@
 # travel
 Projekt
 
-TestHallosoapkdopaskdopa
+http://localhost/phpmyadmin/index.php?route=/database/structure&db=travel_agancy
