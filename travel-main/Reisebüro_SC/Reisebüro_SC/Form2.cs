@@ -21,11 +21,12 @@ namespace Reisebüro_SC
     public partial class Buchung : Form
     {
         public Buchung() => InitializeComponent();
-        Buchung(Reisebüro parentForm) : base()
+
+        /*Buchung(Reisebüro parentForm) : base()
         {
             this.parentForm = parentForm;
         }
-        Reisebüro parentForm;
+        Reisebüro parentForm;*/
 
         private void Reserve_Click(object sender, EventArgs e)
         {
