@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reisebüro));
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbPlace = new System.Windows.Forms.ComboBox();
+            this.search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flp
@@ -40,13 +41,24 @@
             this.flp.Size = new System.Drawing.Size(883, 387);
             this.flp.TabIndex = 10;
             // 
-            // comboBox1
+            // cbPlace
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 11;
+            this.cbPlace.FormattingEnabled = true;
+            this.cbPlace.Location = new System.Drawing.Point(39, 73);
+            this.cbPlace.Name = "cbPlace";
+            this.cbPlace.Size = new System.Drawing.Size(166, 24);
+            this.cbPlace.TabIndex = 11;
+            this.cbPlace.SelectedIndexChanged += new System.EventHandler(this.cbPlace_SelectedIndexChanged);
+            // 
+            // search
+            // 
+            this.search.Location = new System.Drawing.Point(844, 73);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(75, 23);
+            this.search.TabIndex = 12;
+            this.search.Text = "Suchen";
+            this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // Reisebüro
             // 
@@ -54,20 +66,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(943, 632);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.search);
+            this.Controls.Add(this.cbPlace);
             this.Controls.Add(this.flp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Reisebüro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reisebüro";
+            this.Load += new System.EventHandler(this.Reisebüro_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel flp;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbPlace;
+        private System.Windows.Forms.Button search;
     }
 }
 
