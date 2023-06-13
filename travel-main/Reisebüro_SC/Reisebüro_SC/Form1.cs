@@ -54,20 +54,21 @@ namespace Reisebüro_SC
                 Label labelPlace= new Label();
                 labelPlace.Text = place;
                 labelPlace.Name = "placeName";
-                
-                
-                
-                
-
-
-           // panel.Controls.Add(labelPlace);
+               
 
                 Label labelPrice = new Label();
                 labelPrice.Text = price;
                 labelPrice.Name = "priceName";
+
+                System.Windows.Forms.Button myButton = new System.Windows.Forms.Button();
+                myButton.Text = "Buchen";
+                myButton.Name = "buchungButton";
+                myButton.Click += buchungButton_Click;
+
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
+                panel.Controls.Add(myButton);
                 
                
                 flp.Controls.Add(panel);
@@ -92,7 +93,7 @@ namespace Reisebüro_SC
             Startpage();
         }
 
-        public void ZurBuchung_Click(object sender, EventArgs e)
+        public void buchungButton_Click(object sender, EventArgs e)
         {
             /*TravelID = "ZurBuchung";
             using (Add add = new Add())
