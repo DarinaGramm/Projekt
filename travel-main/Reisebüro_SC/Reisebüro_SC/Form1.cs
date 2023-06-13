@@ -9,13 +9,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -30,7 +33,7 @@ namespace Reisebüro_SC
         {
             DB db = new DB();
             MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price FROM travels", db.getConnection());
-
+           
             db.openConnection();
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
@@ -38,7 +41,8 @@ namespace Reisebüro_SC
           
             MySqlDataReader travels = display.ExecuteReader();
             List<string> placesList = new List<string>();
-            
+           
+
             // MatchCollection matchedcountries;
             while (travels.Read())
             {
@@ -47,18 +51,14 @@ namespace Reisebüro_SC
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
                 Panel panel = new FlowLayoutPanel();
-                panel.Name = hotel;
+                
                 panel.BackColor = Color.White;
                 MatchCollection matchedcountries = rg.Matches(place);
                
-                for (int count = 0; count < matchedcountries.Count; count++)
-                {
-                   placesList.Add(matchedcountries[count].Value);
-                   
-
-                }
               
-                
+
+               
+              
 
                 Label labelHotel = new Label();
                 labelHotel.Text = hotel;
@@ -85,7 +85,39 @@ namespace Reisebüro_SC
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
 
+
+
+                
+                for (int count = 0; count < matchedcountries.Count; count++)
+                {
+                    placesList.Add(matchedcountries[count].Value);
+                    //string val = matchedcountries[count].Value;
+                    panel.Name = matchedcountries[count].Value;
+
+                    //pa.Add(matchedcountries[count].Value, panel);
+                    // Panel ha = pa[matchedcountries[count].Value];
+
+
+                    /* if (pai.ContainsKey(matchedcountries[count].Value)) {
+                         MessageBox.Show(matchedcountries[count].Value);
+                         // pai = new Dictionary<String, List <Panel>>();
+                        pai[val] = panel;
+
+
+                         //pai[matchedcountries[count].Value].
+                     }else
+                     {
+                         pai.Add(matchedcountries[count].Value, panel);
+                     }
+                    */
+
+
+
+
+                }
+                
                 flp.Controls.Add(panel);
+
                 panelList.Add(panel);
 
                 /*
@@ -120,6 +152,7 @@ namespace Reisebüro_SC
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             string[] places = list.ToArray();
+            //string[] 
             for (int i = 0; i < places.Length; i++)
             {
                 bool isDuplicate = false;
@@ -181,18 +214,27 @@ namespace Reisebüro_SC
 
         private void search_Click(object sender, EventArgs e)
         {
-            /*
-            
+
             string place = cbPlace.Text;
-
-
-
             Panel[] panels = panelList.ToArray();
+         
             for (int i = 0; i < panels.Length; i++)
             {
-               MessageBox.Show(panels[i].Name);
+                if (panels[i].Name != cbPlace.Text)
+                {
+                    flp.Controls.Remove(panels[i]);
+
+                }
+                else
+                {
+                    flp.Controls.Add(panels[i]);
+                }
+                if (cbPlace.Text == "Alles"){
+                    flp.Controls.Add(panels[i]);
+                   
+                }
             }
-            */
+            
         }
     }
 }
