@@ -22,12 +22,6 @@ namespace Reisebüro_SC
     {
         public Buchung() => InitializeComponent();
 
-        /*Buchung(Reisebüro parentForm) : base()
-        {
-            this.parentForm = parentForm;
-        }
-        Reisebüro parentForm;*/
-
         private void Reserve_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Title.Text) || string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(Surname.Text) || string.IsNullOrEmpty(DateOfBirth.Text) || string.IsNullOrEmpty(TelephoneNumber.Text) || string.IsNullOrEmpty(E_Mail.Text))

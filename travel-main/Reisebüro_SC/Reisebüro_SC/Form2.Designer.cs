@@ -216,6 +216,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Reserve;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox E_Mail;    
+        private System.Windows.Forms.TextBox E_Mail;
     }
 }
