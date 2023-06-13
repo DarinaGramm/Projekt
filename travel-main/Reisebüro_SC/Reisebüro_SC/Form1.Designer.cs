@@ -32,6 +32,9 @@
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.cbPlace = new System.Windows.Forms.ComboBox();
             this.search = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.country = new System.Windows.Forms.Label();
+            this.number = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flp
@@ -60,12 +63,41 @@
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(237, 73);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(101, 24);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // country
+            // 
+            this.country.AutoSize = true;
+            this.country.Location = new System.Drawing.Point(36, 42);
+            this.country.Name = "country";
+            this.country.Size = new System.Drawing.Size(49, 16);
+            this.country.TabIndex = 14;
+            this.country.Text = "Länder";
+            // 
+            // number
+            // 
+            this.number.AutoSize = true;
+            this.number.Location = new System.Drawing.Point(234, 42);
+            this.number.Name = "number";
+            this.number.Size = new System.Drawing.Size(104, 16);
+            this.number.TabIndex = 15;
+            this.number.Text = "Personenanzahl";
+            // 
             // Reisebüro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(943, 632);
+            this.ClientSize = new System.Drawing.Size(1314, 632);
+            this.Controls.Add(this.number);
+            this.Controls.Add(this.country);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.cbPlace);
             this.Controls.Add(this.flp);
@@ -76,6 +108,7 @@
             this.Text = "Reisebüro";
             this.Load += new System.EventHandler(this.Reisebüro_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,6 +116,9 @@
         private System.Windows.Forms.FlowLayoutPanel flp;
         private System.Windows.Forms.ComboBox cbPlace;
         private System.Windows.Forms.Button search;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label country;
+        private System.Windows.Forms.Label number;
     }
 }
 

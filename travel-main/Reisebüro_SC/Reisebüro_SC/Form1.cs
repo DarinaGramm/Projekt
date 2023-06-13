@@ -54,11 +54,6 @@ namespace Reisebüro_SC
                 
                 panel.BackColor = Color.White;
                 MatchCollection matchedcountries = rg.Matches(place);
-               
-              
-
-               
-              
 
                 Label labelHotel = new Label();
                 labelHotel.Text = hotel;
@@ -91,29 +86,7 @@ namespace Reisebüro_SC
                 for (int count = 0; count < matchedcountries.Count; count++)
                 {
                     placesList.Add(matchedcountries[count].Value);
-                    //string val = matchedcountries[count].Value;
                     panel.Name = matchedcountries[count].Value;
-
-                    //pa.Add(matchedcountries[count].Value, panel);
-                    // Panel ha = pa[matchedcountries[count].Value];
-
-
-                    /* if (pai.ContainsKey(matchedcountries[count].Value)) {
-                         MessageBox.Show(matchedcountries[count].Value);
-                         // pai = new Dictionary<String, List <Panel>>();
-                        pai[val] = panel;
-
-
-                         //pai[matchedcountries[count].Value].
-                     }else
-                     {
-                         pai.Add(matchedcountries[count].Value, panel);
-                     }
-                    */
-
-
-
-
                 }
                 
                 flp.Controls.Add(panel);
