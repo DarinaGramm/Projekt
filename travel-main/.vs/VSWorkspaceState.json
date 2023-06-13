@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Reisebüro",
-    "\\Reisebüro\\Reisebüro"
+    "\\Reisebüro_SC",
+    "\\Reisebüro_SC\\Reisebüro_SC"
   ],
-  "SelectedNode": "\\Reisebüro\\Reisebüro\\obj",
+  "SelectedNode": "\\Reisebüro_SC\\Reisebüro_SC\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }
