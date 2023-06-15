@@ -47,26 +47,28 @@ namespace Reisebüro_SC
                 var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
+
                 Panel panel = new FlowLayoutPanel();
-                
+               
                 panel.BackColor = Color.White;
                 panel.Size = new Size(200, 268);
                 var padding = panel.Padding;
                 padding.Left = 5;
                 panel.Padding = padding;
-
-
                 MatchCollection matchedcountries = rg.Matches(place);
 
                 Label labelHotel = new Label();
                 labelHotel.Text = hotel;
                 labelHotel.Name = "hotelNAME";
-               
+                labelHotel.Size = new Size(190, 20);
+
 
                 Label labelPlace = new Label();
                 labelPlace.Text = place;
                 labelPlace.Name = "placeName";
-                
+                labelPlace.Size = new Size(170, 35);
+              
+
 
                 Label labelPrice = new Label();
                 labelPrice.Text = price + "€";
@@ -89,7 +91,7 @@ namespace Reisebüro_SC
                 myButton.Text = "Buchen";
                 myButton.Name = "buchungButton";
                 margin = myButton.Margin;
-                margin.Top = 25;
+                margin.Top = 20;
                 myButton.Margin = margin;
                 myButton.Click += buchungButton_Click;
 

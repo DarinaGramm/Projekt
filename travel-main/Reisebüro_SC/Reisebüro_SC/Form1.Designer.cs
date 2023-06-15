@@ -45,7 +45,7 @@
             this.flp.AutoScroll = true;
             this.flp.Location = new System.Drawing.Point(36, 162);
             this.flp.Name = "flp";
-            this.flp.Size = new System.Drawing.Size(883, 387);
+            this.flp.Size = new System.Drawing.Size(1481, 817);
             this.flp.TabIndex = 10;
             // 
             // cbPlace
@@ -112,7 +112,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(953, 632);
+            this.ClientSize = new System.Drawing.Size(1431, 632);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.number);
             this.Controls.Add(this.country);
