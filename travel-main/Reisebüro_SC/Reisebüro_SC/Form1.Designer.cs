@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reisebüro));
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.cbPlace = new System.Windows.Forms.ComboBox();
@@ -35,10 +36,13 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.country = new System.Windows.Forms.Label();
             this.number = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // flp
             // 
+            this.flp.AutoScroll = true;
             this.flp.Location = new System.Drawing.Point(36, 162);
             this.flp.Name = "flp";
             this.flp.Size = new System.Drawing.Size(883, 387);
@@ -89,12 +93,27 @@
             this.number.TabIndex = 15;
             this.number.Text = "Personenanzahl";
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(380, 73);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(101, 24);
+            this.comboBox2.TabIndex = 16;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Reisebüro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(1314, 632);
+            this.ClientSize = new System.Drawing.Size(953, 632);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.number);
             this.Controls.Add(this.country);
             this.Controls.Add(this.comboBox1);
@@ -119,6 +138,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label country;
         private System.Windows.Forms.Label number;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

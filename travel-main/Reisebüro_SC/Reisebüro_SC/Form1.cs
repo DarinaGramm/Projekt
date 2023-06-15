@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
@@ -17,6 +18,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crmf;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
@@ -33,17 +35,12 @@ namespace Reisebüro_SC
         {
             DB db = new DB();
             MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price FROM travels", db.getConnection());
-           
             db.openConnection();
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
-            //display.Parameters.AddWithValue("@hotel_name", .Text);
-          
             MySqlDataReader travels = display.ExecuteReader();
             List<string> placesList = new List<string>();
-           
-
-            // MatchCollection matchedcountries;
+    
             while (travels.Read())
             {
 
@@ -53,70 +50,71 @@ namespace Reisebüro_SC
                 Panel panel = new FlowLayoutPanel();
                 
                 panel.BackColor = Color.White;
+                panel.Size = new Size(200, 268);
+                var padding = panel.Padding;
+                padding.Left = 5;
+                panel.Padding = padding;
+
+
                 MatchCollection matchedcountries = rg.Matches(place);
 
                 Label labelHotel = new Label();
                 labelHotel.Text = hotel;
                 labelHotel.Name = "hotelNAME";
-
-
+               
 
                 Label labelPlace = new Label();
                 labelPlace.Text = place;
                 labelPlace.Name = "placeName";
-
+                
 
                 Label labelPrice = new Label();
                 labelPrice.Text = price;
                 labelPrice.Name = "priceName";
 
+
+                PictureBox pb1 = new PictureBox();
+                //MessageBox.Show(hotel);
+                pb1.ImageLocation = "../Bilder/" + hotel + ".jpg";
+        
+                pb1.Size = new Size(183, 137);
+                var margin = pb1.Margin;
+                margin.Bottom = 15;
+                margin.Top = 10;
+                padding.Right = 5;
+                pb1.Margin = margin;
+                pb1.Padding = padding;
+                pb1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+
                 System.Windows.Forms.Button myButton = new System.Windows.Forms.Button();
                 myButton.Text = "Buchen";
                 myButton.Name = "buchungButton";
+                margin = myButton.Margin;
+                margin.Top = 25;
+                myButton.Margin = margin;
                 myButton.Click += buchungButton_Click;
 
+
+                panel.Controls.Add(pb1);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
+               
 
-
-
-                
                 for (int count = 0; count < matchedcountries.Count; count++)
                 {
                     placesList.Add(matchedcountries[count].Value);
                     panel.Name = matchedcountries[count].Value;
                 }
-                
+
+
+
                 flp.Controls.Add(panel);
-
                 panelList.Add(panel);
-
-                /*
-                cbPlace.Items.Clear();
-                for (int i = 0; i < list[0].Count; i++)
-                {
-                    cbPlace.Items.Add(list[0][i]);
-                }
-                */
-
-                //TravelID.Button = travels.GetValue(0).ToString();
-
-                //MessageBox.Show(hotel);
-                //MessageBox.Show(price);
-                //MessageBox.Show(place);
-                // hotelName.Text = travels.GetValue(0).ToString();
-                //place.Text = travels.GetValue(1).ToString();
-                //price.Text = travels.GetValue(2).ToString();
             }
-
-            //setComboBox(matchedcountries1, cbPlace: cbPlace);
-
-
             setComboBox(placesList, cbPlace);
-
-
             db.closeConnection();
         }
 
@@ -125,7 +123,6 @@ namespace Reisebüro_SC
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             string[] places = list.ToArray();
-            //string[] 
             for (int i = 0; i < places.Length; i++)
             {
                 bool isDuplicate = false;
@@ -155,14 +152,6 @@ namespace Reisebüro_SC
 
         public void buchungButton_Click(object sender, EventArgs e)
         {
-            /*TravelID = "ZurBuchung";
-            using (Add add = new Add())
-            {
-                add.buttonID = TravelID;
-                add.ShowDialog();
-            }
-            @travel_id.HiddenFor(model => );
-            //display.Parameters.AddWithValue("@travel_id", TravelID.Text);*/
             Buchung checkout = new Buchung();
             checkout.ShowDialog(this);
         }

@@ -144,6 +144,7 @@
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="obj\.editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -157,6 +158,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Bilder\Amari.jpg" />
+    <Content Include="bin\Bilder\booking.ico" />
+    <Content Include="bin\Bilder\Delphin Deluxe.jpg" />
+    <Content Include="bin\Bilder\Du Lac et Du Parc Grand Resort.jpg" />
+    <Content Include="bin\Bilder\La Palma Jardin.jpg" />
+    <Content Include="bin\Bilder\Lyttos Beach.jpg" />
+    <Content Include="bin\Bilder\plane.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
