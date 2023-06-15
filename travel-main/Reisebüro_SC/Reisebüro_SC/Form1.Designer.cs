@@ -33,11 +33,16 @@
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.cbPlace = new System.Windows.Forms.ComboBox();
             this.search = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.personNumbercb = new System.Windows.Forms.ComboBox();
             this.country = new System.Windows.Forms.Label();
             this.number = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.costLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flp
@@ -51,15 +56,15 @@
             // cbPlace
             // 
             this.cbPlace.FormattingEnabled = true;
-            this.cbPlace.Location = new System.Drawing.Point(39, 73);
+            this.cbPlace.Location = new System.Drawing.Point(36, 73);
             this.cbPlace.Name = "cbPlace";
-            this.cbPlace.Size = new System.Drawing.Size(166, 24);
+            this.cbPlace.Size = new System.Drawing.Size(202, 24);
             this.cbPlace.TabIndex = 11;
             this.cbPlace.SelectedIndexChanged += new System.EventHandler(this.cbPlace_SelectedIndexChanged);
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(844, 73);
+            this.search.Location = new System.Drawing.Point(1324, 73);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(75, 23);
             this.search.TabIndex = 12;
@@ -67,18 +72,18 @@
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // comboBox1
+            // personNumbercb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(237, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(101, 24);
-            this.comboBox1.TabIndex = 13;
+            this.personNumbercb.FormattingEnabled = true;
+            this.personNumbercb.Location = new System.Drawing.Point(302, 73);
+            this.personNumbercb.Name = "personNumbercb";
+            this.personNumbercb.Size = new System.Drawing.Size(135, 24);
+            this.personNumbercb.TabIndex = 13;
             // 
             // country
             // 
             this.country.AutoSize = true;
-            this.country.Location = new System.Drawing.Point(36, 42);
+            this.country.Location = new System.Drawing.Point(33, 54);
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(49, 16);
             this.country.TabIndex = 14;
@@ -87,19 +92,11 @@
             // number
             // 
             this.number.AutoSize = true;
-            this.number.Location = new System.Drawing.Point(234, 42);
+            this.number.Location = new System.Drawing.Point(299, 55);
             this.number.Name = "number";
             this.number.Size = new System.Drawing.Size(104, 16);
             this.number.TabIndex = 15;
             this.number.Text = "Personenanzahl";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(380, 73);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(101, 24);
-            this.comboBox2.TabIndex = 16;
             // 
             // contextMenuStrip1
             // 
@@ -107,16 +104,70 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(713, 53);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(31, 16);
+            this.fromLabel.TabIndex = 19;
+            this.fromLabel.Text = "Von";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(716, 74);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
+            this.dateTimePicker1.TabIndex = 20;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(1018, 73);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(245, 22);
+            this.dateTimePicker2.TabIndex = 21;
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(1015, 54);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(26, 16);
+            this.toLabel.TabIndex = 22;
+            this.toLabel.Text = "Bis";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(501, 74);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(158, 24);
+            this.comboBox1.TabIndex = 23;
+            // 
+            // costLabel
+            // 
+            this.costLabel.AutoSize = true;
+            this.costLabel.Location = new System.Drawing.Point(498, 54);
+            this.costLabel.Name = "costLabel";
+            this.costLabel.Size = new System.Drawing.Size(38, 16);
+            this.costLabel.TabIndex = 24;
+            this.costLabel.Text = "Preis";
+            // 
             // Reisebüro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1431, 632);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.costLabel);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.toLabel);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.fromLabel);
             this.Controls.Add(this.number);
             this.Controls.Add(this.country);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.personNumbercb);
             this.Controls.Add(this.search);
             this.Controls.Add(this.cbPlace);
             this.Controls.Add(this.flp);
@@ -135,11 +186,16 @@
         private System.Windows.Forms.FlowLayoutPanel flp;
         private System.Windows.Forms.ComboBox cbPlace;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox personNumbercb;
         private System.Windows.Forms.Label country;
         private System.Windows.Forms.Label number;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label costLabel;
     }
 }
 

@@ -49,27 +49,22 @@ namespace Reisebüro_SC
                 var price = travels.GetString(2);
 
                 Panel panel = new FlowLayoutPanel();
-               
-                panel.BackColor = Color.White;
-                panel.Size = new Size(200, 268);
                 var padding = panel.Padding;
                 padding.Left = 5;
                 panel.Padding = padding;
-                MatchCollection matchedcountries = rg.Matches(place);
-
+                panel.BackColor = Color.White;
+                panel.Size = new Size(200, 268);
+                
                 Label labelHotel = new Label();
                 labelHotel.Text = hotel;
                 labelHotel.Name = "hotelNAME";
                 labelHotel.Size = new Size(190, 20);
-
 
                 Label labelPlace = new Label();
                 labelPlace.Text = place;
                 labelPlace.Name = "placeName";
                 labelPlace.Size = new Size(170, 35);
               
-
-
                 Label labelPrice = new Label();
                 labelPrice.Text = price + "€";
                 labelPrice.Name = "priceName";
@@ -86,7 +81,6 @@ namespace Reisebüro_SC
                 pb1.Padding = padding;
                 pb1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-
                 System.Windows.Forms.Button myButton = new System.Windows.Forms.Button();
                 myButton.Text = "Buchen";
                 myButton.Name = "buchungButton";
@@ -95,31 +89,28 @@ namespace Reisebüro_SC
                 myButton.Margin = margin;
                 myButton.Click += buchungButton_Click;
 
-
                 panel.Controls.Add(pb1);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
-               
 
+                MatchCollection matchedcountries = rg.Matches(place);
                 for (int count = 0; count < matchedcountries.Count; count++)
                 {
                     placesList.Add(matchedcountries[count].Value);
                     panel.Name = matchedcountries[count].Value;
                 }
 
-
-
                 flp.Controls.Add(panel);
                 panelList.Add(panel);
             }
+
             setComboBox(placesList, cbPlace);
             db.closeConnection();
+
         }
 
-      
-        
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             string[] places = list.ToArray();
@@ -177,22 +168,22 @@ namespace Reisebüro_SC
         private void search_Click(object sender, EventArgs e)
         {
 
-            string place = cbPlace.Text;
-            Panel[] panels = panelList.ToArray();
+            string placeSelected = cbPlace.Text;
+            Panel[] panelArray = panelList.ToArray();
          
-            for (int i = 0; i < panels.Length; i++)
+            for (int i = 0; i < panelArray.Length; i++)
             {
-                if (panels[i].Name != cbPlace.Text)
+                if (panelArray[i].Name != placeSelected)
                 {
-                    flp.Controls.Remove(panels[i]);
+                    flp.Controls.Remove(panelArray[i]);
 
                 }
                 else
                 {
-                    flp.Controls.Add(panels[i]);
+                    flp.Controls.Add(panelArray[i]);
                 }
                 if (cbPlace.Text == "Alles"){
-                    flp.Controls.Add(panels[i]);
+                    flp.Controls.Add(panelArray[i]);
                    
                 }
             }
