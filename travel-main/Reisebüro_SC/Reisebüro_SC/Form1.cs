@@ -69,14 +69,12 @@ namespace Reisebüro_SC
                 
 
                 Label labelPrice = new Label();
-                labelPrice.Text = price;
+                labelPrice.Text = price + "€";
                 labelPrice.Name = "priceName";
 
 
                 PictureBox pb1 = new PictureBox();
-                //MessageBox.Show(hotel);
                 pb1.ImageLocation = "../Bilder/" + hotel + ".jpg";
-        
                 pb1.Size = new Size(183, 137);
                 var margin = pb1.Margin;
                 margin.Bottom = 15;

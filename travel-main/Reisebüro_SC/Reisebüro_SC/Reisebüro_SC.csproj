@@ -161,12 +161,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Bilder\Amari.jpg" />
+    <Content Include="bin\Bilder\AVANI Victoria Falls Resort.jpg" />
+    <Content Include="bin\Bilder\Best Western Hotel President.jpg" />
     <Content Include="bin\Bilder\booking.ico" />
+    <Content Include="bin\Bilder\Cenit.jpg" />
+    <Content Include="bin\Bilder\Comfort Suites Paradise Island.jpg" />
+    <Content Include="bin\Bilder\Conrad Dubai.jpg" />
     <Content Include="bin\Bilder\Delphin Deluxe.jpg" />
+    <Content Include="bin\Bilder\Delphin Diva.jpg" />
     <Content Include="bin\Bilder\Du Lac et Du Parc Grand Resort.jpg" />
+    <Content Include="bin\Bilder\Grupotel Playa de Palma Suites &amp; Spa.jpg" />
+    <Content Include="bin\Bilder\Hilton Hawaiian Village Waikiki Beach Resort.jpg" />
+    <Content Include="bin\Bilder\Hilton Malta.jpg" />
+    <Content Include="bin\Bilder\Holiday Suites Across From Universal Orlando.jpg" />
+    <Content Include="bin\Bilder\Horizon Beach Resort.jpg" />
+    <Content Include="bin\Bilder\Hotel Baía Azul.jpg" />
+    <Content Include="bin\Bilder\Hotel Parque Tropical.jpg" />
+    <Content Include="bin\Bilder\Kempinski Seychelles Resort Baie Lazare.jpg" />
     <Content Include="bin\Bilder\La Palma Jardin.jpg" />
     <Content Include="bin\Bilder\Lyttos Beach.jpg" />
+    <Content Include="bin\Bilder\Paradis Palace.jpg" />
     <Content Include="bin\Bilder\plane.ico" />
+    <Content Include="bin\Bilder\PortoBay Rio de Janeiro.jpg" />
+    <Content Include="bin\Bilder\Royal Decameron Tafoukt Beach.jpg" />
+    <Content Include="bin\Bilder\Royal Palms Beach Hotel.jpg" />
+    <Content Include="bin\Bilder\Terme Helvetia.jpg" />
+    <Content Include="bin\Bilder\The Grand Resort, Hurghada.jpg" />
+    <Content Include="bin\Bilder\Windhoek Country Club Resort.jpg" />
+    <Content Include="bin\Bilder\Yigitalp.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
