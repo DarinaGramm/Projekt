@@ -56,7 +56,7 @@
             // cbPlace
             // 
             this.cbPlace.FormattingEnabled = true;
-            this.cbPlace.Location = new System.Drawing.Point(36, 73);
+            this.cbPlace.Location = new System.Drawing.Point(36, 76);
             this.cbPlace.Name = "cbPlace";
             this.cbPlace.Size = new System.Drawing.Size(202, 24);
             this.cbPlace.TabIndex = 11;
@@ -83,7 +83,7 @@
             // country
             // 
             this.country.AutoSize = true;
-            this.country.Location = new System.Drawing.Point(33, 54);
+            this.country.Location = new System.Drawing.Point(33, 53);
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(49, 16);
             this.country.TabIndex = 14;

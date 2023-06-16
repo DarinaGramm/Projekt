@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
@@ -43,51 +44,18 @@ namespace Reisebüro_SC
     
             while (travels.Read())
             {
-
+               
                 var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
 
-                Panel panel = new FlowLayoutPanel();
-                var padding = panel.Padding;
-                padding.Left = 5;
-                panel.Padding = padding;
-                panel.BackColor = Color.White;
-                panel.Size = new Size(200, 268);
-                
-                Label labelHotel = new Label();
-                labelHotel.Text = hotel;
-                labelHotel.Name = "hotelNAME";
-                labelHotel.Size = new Size(190, 20);
+                Panel panel = CreatePanel();
+                Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
+                Label labelPlace = CreateLabel(place, "placeName", new Size(170, 35));
+                Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
-                Label labelPlace = new Label();
-                labelPlace.Text = place;
-                labelPlace.Name = "placeName";
-                labelPlace.Size = new Size(170, 35);
-              
-                Label labelPrice = new Label();
-                labelPrice.Text = price + "€";
-                labelPrice.Name = "priceName";
-
-
-                PictureBox pb1 = new PictureBox();
-                pb1.ImageLocation = "../Bilder/" + hotel + ".jpg";
-                pb1.Size = new Size(183, 137);
-                var margin = pb1.Margin;
-                margin.Bottom = 15;
-                margin.Top = 10;
-                padding.Right = 5;
-                pb1.Margin = margin;
-                pb1.Padding = padding;
-                pb1.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                System.Windows.Forms.Button myButton = new System.Windows.Forms.Button();
-                myButton.Text = "Buchen";
-                myButton.Name = "buchungButton";
-                margin = myButton.Margin;
-                margin.Top = 20;
-                myButton.Margin = margin;
-                myButton.Click += buchungButton_Click;
+                PictureBox pb1 = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
+                System.Windows.Forms.Button myButton = CreateButton("Buchen", "buchungButton", buchungButton_Click);
 
                 panel.Controls.Add(pb1);
                 panel.Controls.Add(labelHotel);
@@ -109,6 +77,68 @@ namespace Reisebüro_SC
             setComboBox(placesList, cbPlace);
             db.closeConnection();
 
+        }
+
+        // Function to create a Panel with common settings
+        Panel CreatePanel()
+        {
+            Panel panel = new FlowLayoutPanel
+            {
+                Padding = new Padding(5, 0, 0, 0),
+                BackColor = Color.White,
+                Size = new Size(200, 268)
+            };
+
+            return panel;
+        }
+
+        Label CreateLabel(string text, string name, Size size)
+        {
+            Label label = new Label
+            {
+                Text = text,
+                Name = name,
+                Size = size
+            };
+
+            return label;
+        }
+
+        PictureBox CreatePb(string imageLocation, Size size)
+        {
+            PictureBox pb = new PictureBox
+            {
+                ImageLocation = imageLocation,
+                Size = size,
+                Margin = new Padding { Bottom = 15, Top = 10 },
+                Padding = new Padding { Left = 5 },
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+
+            return pb;
+        }
+
+        System.Windows.Forms.Button CreateButton(string text, string name, EventHandler clickHandler)
+        {
+            System.Windows.Forms.Button button = new System.Windows.Forms.Button
+            {
+                Text = text,
+                Name = name,
+                Margin = new Padding { Top = 20 }
+            };
+
+            button.Click += clickHandler;
+
+            return button;
+        }
+
+        public void styleElement(dynamic element, int number, dynamic position) {
+
+           var elementStyled = element;
+            //element = new Thickness(15);
+            //elementStyled.position = number;
+            elementStyled.Left = number;
+            element = elementStyled;
         }
 
         public void setComboBox(List<string> list, dynamic cb) {
