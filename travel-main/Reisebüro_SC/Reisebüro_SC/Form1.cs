@@ -35,7 +35,7 @@ namespace Reisebüro_SC
         public void Startpage()
         {
             DB db = new DB();
-            MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price FROM travels", db.getConnection());
+            MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price, travel_id FROM travels", db.getConnection());
             db.openConnection();
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
@@ -48,16 +48,17 @@ namespace Reisebüro_SC
                 var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
+                var id = travels.GetString(3);
 
                 Panel panel = CreatePanel();
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
                 Label labelPlace = CreateLabel(place, "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
-                PictureBox pb1 = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
-                System.Windows.Forms.Button myButton = CreateButton("Buchen", "buchungButton", buchungButton_Click);
+                PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
+                System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}€", buchungButton_Click);
 
-                panel.Controls.Add(pb1);
+                panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
@@ -79,7 +80,6 @@ namespace Reisebüro_SC
 
         }
 
-        // Function to create a Panel with common settings
         Panel CreatePanel()
         {
             Panel panel = new FlowLayoutPanel
@@ -132,15 +132,6 @@ namespace Reisebüro_SC
             return button;
         }
 
-        public void styleElement(dynamic element, int number, dynamic position) {
-
-           var elementStyled = element;
-            //element = new Thickness(15);
-            //elementStyled.position = number;
-            elementStyled.Left = number;
-            element = elementStyled;
-        }
-
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             string[] places = list.ToArray();
@@ -176,25 +167,6 @@ namespace Reisebüro_SC
             Buchung checkout = new Buchung();
             checkout.ShowDialog(this);
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Reisebüro_Load(object sender, EventArgs e)
-        {
-           
-
-
-        }
-
-        private void cbPlace_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void search_Click(object sender, EventArgs e)
         {
 

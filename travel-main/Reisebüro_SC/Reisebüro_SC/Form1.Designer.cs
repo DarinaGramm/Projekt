@@ -60,7 +60,7 @@
             this.cbPlace.Name = "cbPlace";
             this.cbPlace.Size = new System.Drawing.Size(202, 24);
             this.cbPlace.TabIndex = 11;
-            this.cbPlace.SelectedIndexChanged += new System.EventHandler(this.cbPlace_SelectedIndexChanged);
+           // this.cbPlace.SelectedIndexChanged += new System.EventHandler(this.cbPlace_SelectedIndexChanged);
             // 
             // search
             // 
@@ -176,7 +176,7 @@
             this.Name = "Reisebüro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reisebüro";
-            this.Load += new System.EventHandler(this.Reisebüro_Load);
+            //this.Load += new System.EventHandler(this.Reisebüro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
