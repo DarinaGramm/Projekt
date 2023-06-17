@@ -33,7 +33,7 @@
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.cbPlace = new System.Windows.Forms.ComboBox();
             this.search = new System.Windows.Forms.Button();
-            this.personNumbercb = new System.Windows.Forms.ComboBox();
+            this.cbNP = new System.Windows.Forms.ComboBox();
             this.country = new System.Windows.Forms.Label();
             this.number = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -41,7 +41,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.toLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbPrice = new System.Windows.Forms.ComboBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -71,13 +71,13 @@
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // personNumbercb
+            // cbNP
             // 
-            this.personNumbercb.FormattingEnabled = true;
-            this.personNumbercb.Location = new System.Drawing.Point(302, 73);
-            this.personNumbercb.Name = "personNumbercb";
-            this.personNumbercb.Size = new System.Drawing.Size(135, 24);
-            this.personNumbercb.TabIndex = 13;
+            this.cbNP.FormattingEnabled = true;
+            this.cbNP.Location = new System.Drawing.Point(302, 73);
+            this.cbNP.Name = "cbNP";
+            this.cbNP.Size = new System.Drawing.Size(135, 24);
+            this.cbNP.TabIndex = 13;
             // 
             // country
             // 
@@ -136,13 +136,13 @@
             this.toLabel.TabIndex = 22;
             this.toLabel.Text = "Bis";
             // 
-            // comboBox1
+            // cbPrice
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(501, 74);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(158, 24);
-            this.comboBox1.TabIndex = 23;
+            this.cbPrice.FormattingEnabled = true;
+            this.cbPrice.Location = new System.Drawing.Point(501, 74);
+            this.cbPrice.Name = "cbPrice";
+            this.cbPrice.Size = new System.Drawing.Size(158, 24);
+            this.cbPrice.TabIndex = 23;
             // 
             // costLabel
             // 
@@ -160,14 +160,14 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1431, 632);
             this.Controls.Add(this.costLabel);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbPrice);
             this.Controls.Add(this.toLabel);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.fromLabel);
             this.Controls.Add(this.number);
             this.Controls.Add(this.country);
-            this.Controls.Add(this.personNumbercb);
+            this.Controls.Add(this.cbNP);
             this.Controls.Add(this.search);
             this.Controls.Add(this.cbPlace);
             this.Controls.Add(this.flp);
@@ -185,7 +185,7 @@
         private System.Windows.Forms.FlowLayoutPanel flp;
         private System.Windows.Forms.ComboBox cbPlace;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.ComboBox personNumbercb;
+        private System.Windows.Forms.ComboBox cbNP;
         private System.Windows.Forms.Label country;
         private System.Windows.Forms.Label number;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -193,7 +193,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label toLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbPrice;
         private System.Windows.Forms.Label costLabel;
     }
 }

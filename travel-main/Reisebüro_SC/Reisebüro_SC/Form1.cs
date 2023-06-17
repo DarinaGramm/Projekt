@@ -42,7 +42,9 @@ namespace Reisebüro_SC
             Regex rg = new Regex(regex);
             MySqlDataReader travels = display.ExecuteReader();
             List<string> placesList = new List<string>();
-    
+            List<string> numberPersonList = new List<string>();
+            List<int> priceList = new List<int>();
+
             while (travels.Read())
             {
                
@@ -62,7 +64,7 @@ namespace Reisebüro_SC
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
-                System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}€", buchungButton_Click);
+                System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}", buchungButton_Click);
         
                 panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
@@ -76,6 +78,8 @@ namespace Reisebüro_SC
                 {
                     placesList.Add(matchedcountries[count].Value);
                     panel.Name = matchedcountries[count].Value;
+                    numberPersonList.Add(numberPerson);
+                    priceList.Add(int.Parse(price));
                 }
 
                 flp.Controls.Add(panel);
@@ -83,7 +87,8 @@ namespace Reisebüro_SC
             }
 
             setComboBox(placesList, cbPlace);
-            db.closeConnection();
+            setComboBox(numberPersonList, cbNP);
+            setComboBoxPrice(priceList);
 
         }
 
@@ -143,6 +148,8 @@ namespace Reisebüro_SC
 
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
+            list.Sort();
+           
             string[] places = list.ToArray();
             for (int i = 0; i < places.Length; i++)
             {
@@ -164,6 +171,37 @@ namespace Reisebüro_SC
             }
 
         }
+        public void setComboBoxPrice(List<int> prices)
+        {
+            prices.Sort();
+
+            cbPrice.Items.Add("200 - 500");
+            cbPrice.Items.Add("500 - 700");
+            cbPrice.Items.Add("700 - 1000");
+            cbPrice.Items.Add("1000 - 1500");
+            cbPrice.Items.Add("1500 - 3000");
+
+        }
+        public bool priceInRange(string priceHotel, string priceSelected)
+        {
+            string ps = priceSelected.Replace(" ", "");
+            string ph = priceHotel.Replace(" ", "");
+            string[] parts = ps.Split('-');
+            string[] priceHotelParts = ph.Split('€');
+            int priceMin = int.Parse(parts[0]);
+            int priceMax = int.Parse(parts[1]);
+            int priceH = int.Parse(priceHotelParts[0]);
+
+            if (priceH >= priceMin && priceH <= priceMax)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+
+
 
         public Reisebüro()
         {
@@ -180,24 +218,33 @@ namespace Reisebüro_SC
         {
 
             string placeSelected = cbPlace.Text;
+            string priceSelected = cbPrice.Text;
+            
             Panel[] panelArray = panelList.ToArray();
-         
+
             for (int i = 0; i < panelArray.Length; i++)
             {
-                if (panelArray[i].Name != placeSelected)
+                Label price = panelArray[i].Controls.Find("priceName", true).FirstOrDefault() as Label;
+                bool isPlaceMatched = panelArray[i].Name == placeSelected;
+                bool isPriceMatched = priceInRange(price.Text, priceSelected);
+
+               
+                if (isPlaceMatched && isPriceMatched)
+                {
+                    flp.Controls.Add(panelArray[i]);
+                }
+                else 
                 {
                     flp.Controls.Remove(panelArray[i]);
-
-                }
-                else
-                {
-                    flp.Controls.Add(panelArray[i]);
-                }
-                if (cbPlace.Text == "Alles"){
-                    flp.Controls.Add(panelArray[i]);
                    
                 }
             }
+
+            if (cbPlace.Text == "Alles")
+            {
+                flp.Controls.AddRange(panelArray);
+            
+        }
             
         }
     }
