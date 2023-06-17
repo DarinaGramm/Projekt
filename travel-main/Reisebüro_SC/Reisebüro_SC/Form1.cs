@@ -20,6 +20,7 @@ using System.Xml.Linq;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Crmf;
+using Org.BouncyCastle.Utilities;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
@@ -35,7 +36,7 @@ namespace Reisebüro_SC
         public void Startpage()
         {
             DB db = new DB();
-            MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price, travel_id FROM travels", db.getConnection());
+            MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price, travel_id, number_of_persons, start_date, end_date FROM travels", db.getConnection());
             db.openConnection();
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
@@ -49,20 +50,26 @@ namespace Reisebüro_SC
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
                 var id = travels.GetString(3);
+                var numberPerson = travels.GetString(4);
+                var startDate = travels.GetString(5);
+                var endDate = travels.GetString(6);
+                string[] startDateSplit = startDate.Split(' ');
+                string[] endDateSplit = endDate.Split(' ');
 
-                Panel panel = CreatePanel();
+                Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
                 Label labelPlace = CreateLabel(place, "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
                 System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}€", buchungButton_Click);
-
+        
                 panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
+               
 
                 MatchCollection matchedcountries = rg.Matches(place);
                 for (int count = 0; count < matchedcountries.Count; count++)
@@ -80,15 +87,17 @@ namespace Reisebüro_SC
 
         }
 
-        Panel CreatePanel()
+        Panel CreatePanel(string number, string dateStart, string dateEnd)
         {
             Panel panel = new FlowLayoutPanel
             {
                 Padding = new Padding(5, 0, 0, 0),
                 BackColor = Color.White,
-                Size = new Size(200, 268)
+                Size = new Size(200, 268),
+                Tag = number + ',' + dateStart + ',' + dateEnd
+                
             };
-
+            
             return panel;
         }
 

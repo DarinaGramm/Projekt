@@ -60,7 +60,6 @@
             this.cbPlace.Name = "cbPlace";
             this.cbPlace.Size = new System.Drawing.Size(202, 24);
             this.cbPlace.TabIndex = 11;
-           // this.cbPlace.SelectedIndexChanged += new System.EventHandler(this.cbPlace_SelectedIndexChanged);
             // 
             // search
             // 
@@ -83,9 +82,10 @@
             // country
             // 
             this.country.AutoSize = true;
+            this.country.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.country.Location = new System.Drawing.Point(33, 53);
             this.country.Name = "country";
-            this.country.Size = new System.Drawing.Size(49, 16);
+            this.country.Size = new System.Drawing.Size(53, 17);
             this.country.TabIndex = 14;
             this.country.Text = "Länder";
             // 
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Teal;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1431, 632);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.comboBox1);
@@ -176,7 +176,6 @@
             this.Name = "Reisebüro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reisebüro";
-            //this.Load += new System.EventHandler(this.Reisebüro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
