@@ -174,7 +174,7 @@ namespace Reisebüro_SC
         public void setComboBoxPrice(List<int> prices)
         {
             prices.Sort();
-
+            cbPrice.Items.Add("Alles");
             cbPrice.Items.Add("200 - 500");
             cbPrice.Items.Add("500 - 700");
             cbPrice.Items.Add("700 - 1000");
@@ -225,11 +225,13 @@ namespace Reisebüro_SC
             for (int i = 0; i < panelArray.Length; i++)
             {
                 Label price = panelArray[i].Controls.Find("priceName", true).FirstOrDefault() as Label;
-                bool isPlaceMatched = panelArray[i].Name == placeSelected;
-                bool isPriceMatched = priceInRange(price.Text, priceSelected);
+                if (placeSelected == "Alles" && priceSelected == "Alles")
+                {
+                    flp.Controls.AddRange(panelArray);
 
-               
-                if (isPlaceMatched && isPriceMatched)
+                }else
+                {
+                if (panelArray[i].Name == placeSelected && priceInRange(price.Text, priceSelected))
                 {
                     flp.Controls.Add(panelArray[i]);
                 }
@@ -238,13 +240,10 @@ namespace Reisebüro_SC
                     flp.Controls.Remove(panelArray[i]);
                    
                 }
+                }
             }
 
-            if (cbPlace.Text == "Alles")
-            {
-                flp.Controls.AddRange(panelArray);
             
-        }
             
         }
     }
