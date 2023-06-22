@@ -39,9 +39,24 @@ namespace Reisebüro_SC
        
         public void Startpage()
         {
+            string booked_travel_ids = "0";
             DB db = new DB();
-            MySqlCommand display = new MySqlCommand("SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date` FROM travels", db.getConnection());
+            MySqlCommand display1 = new MySqlCommand("SELECT DISTINCT `travel_id` FROM clients WHERE `travel_id` IS NOT NULL", db.getConnection());
             db.openConnection();
+            MySqlDataReader bookings = display1.ExecuteReader();
+
+            while (bookings.Read()) {
+                if (booked_travel_ids != "")
+                {
+                    booked_travel_ids += ",";
+                }
+                booked_travel_ids += bookings.GetString(0);
+            }
+            db.closeConnection();
+ 
+            MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date` FROM travels WHERE travel_id NOT IN ({booked_travel_ids})", db.getConnection());
+            db.openConnection();
+            //MySqlCommand display2 = new MySqlCommand("SELECT `travel_id` FROM clients", db.getConnection());
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
             MySqlDataReader travels = display.ExecuteReader();
@@ -51,8 +66,8 @@ namespace Reisebüro_SC
 
             while (travels.Read())
             {
-                
-                var hotel = travels.GetString(0);
+               
+                    var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
                 var id = travels.GetString(3);
@@ -92,6 +107,7 @@ namespace Reisebüro_SC
                 panelList.Add(panel);
             }
             }
+            
 
             db.closeConnection();
 

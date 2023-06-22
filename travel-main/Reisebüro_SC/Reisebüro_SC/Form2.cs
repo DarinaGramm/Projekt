@@ -62,6 +62,9 @@ namespace Reisebüro_SC
                 db.closeConnection();
 
                 MessageBox.Show("Vielen Dank für Ihre Buchung!");
+               
+                Reisebüro checkout = new Reisebüro();
+                checkout.ShowDialog(this);
             }
         }
 
@@ -135,8 +138,9 @@ namespace Reisebüro_SC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Reisebüro checkout = new Reisebüro();
-            checkout.ShowDialog(this);
+          this.Hide();
+        //  Reisebüro   checkout = new Reisebüro();
+          //  checkout.ShowDialog(this);
         }
     }
 }
