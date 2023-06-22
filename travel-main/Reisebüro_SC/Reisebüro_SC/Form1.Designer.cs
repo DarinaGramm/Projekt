@@ -55,48 +55,57 @@
             // 
             // cbPlace
             // 
+            this.cbPlace.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPlace.FormattingEnabled = true;
-            this.cbPlace.Location = new System.Drawing.Point(36, 76);
+            this.cbPlace.Location = new System.Drawing.Point(36, 80);
             this.cbPlace.Name = "cbPlace";
-            this.cbPlace.Size = new System.Drawing.Size(202, 24);
+            this.cbPlace.Size = new System.Drawing.Size(227, 28);
             this.cbPlace.TabIndex = 11;
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(1324, 73);
+            this.search.BackColor = System.Drawing.Color.White;
+            this.search.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.ForeColor = System.Drawing.Color.Black;
+            this.search.Location = new System.Drawing.Point(1316, 78);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(75, 23);
+            this.search.Size = new System.Drawing.Size(82, 33);
             this.search.TabIndex = 12;
             this.search.Text = "Suchen";
-            this.search.UseVisualStyleBackColor = true;
+            this.search.UseVisualStyleBackColor = false;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // cbNP
             // 
+            this.cbNP.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNP.FormattingEnabled = true;
-            this.cbNP.Location = new System.Drawing.Point(302, 73);
+            this.cbNP.Location = new System.Drawing.Point(327, 80);
             this.cbNP.Name = "cbNP";
-            this.cbNP.Size = new System.Drawing.Size(135, 24);
+            this.cbNP.Size = new System.Drawing.Size(135, 28);
             this.cbNP.TabIndex = 13;
             // 
             // country
             // 
             this.country.AutoSize = true;
-            this.country.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.country.BackColor = System.Drawing.Color.Transparent;
+            this.country.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.country.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.country.Location = new System.Drawing.Point(33, 53);
             this.country.Name = "country";
-            this.country.Size = new System.Drawing.Size(53, 17);
+            this.country.Size = new System.Drawing.Size(68, 22);
             this.country.TabIndex = 14;
             this.country.Text = "Länder";
             // 
             // number
             // 
             this.number.AutoSize = true;
-            this.number.Location = new System.Drawing.Point(299, 55);
+            this.number.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.number.Location = new System.Drawing.Point(323, 55);
             this.number.Name = "number";
-            this.number.Size = new System.Drawing.Size(104, 16);
+            this.number.Size = new System.Drawing.Size(131, 22);
             this.number.TabIndex = 15;
             this.number.Text = "Personenanzahl";
+            this.number.Click += new System.EventHandler(this.number_Click);
             // 
             // contextMenuStrip1
             // 
@@ -107,49 +116,55 @@
             // fromLabel
             // 
             this.fromLabel.AutoSize = true;
+            this.fromLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fromLabel.Location = new System.Drawing.Point(713, 53);
             this.fromLabel.Name = "fromLabel";
-            this.fromLabel.Size = new System.Drawing.Size(31, 16);
+            this.fromLabel.Size = new System.Drawing.Size(41, 22);
             this.fromLabel.TabIndex = 19;
             this.fromLabel.Text = "Von";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(716, 74);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(717, 80);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(244, 27);
             this.dateTimePicker1.TabIndex = 20;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1018, 73);
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(1019, 80);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(245, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(245, 27);
             this.dateTimePicker2.TabIndex = 21;
             // 
             // toLabel
             // 
             this.toLabel.AutoSize = true;
+            this.toLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toLabel.Location = new System.Drawing.Point(1015, 54);
             this.toLabel.Name = "toLabel";
-            this.toLabel.Size = new System.Drawing.Size(26, 16);
+            this.toLabel.Size = new System.Drawing.Size(31, 22);
             this.toLabel.TabIndex = 22;
             this.toLabel.Text = "Bis";
             // 
             // cbPrice
             // 
+            this.cbPrice.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPrice.FormattingEnabled = true;
-            this.cbPrice.Location = new System.Drawing.Point(501, 74);
+            this.cbPrice.Location = new System.Drawing.Point(528, 80);
             this.cbPrice.Name = "cbPrice";
-            this.cbPrice.Size = new System.Drawing.Size(158, 24);
+            this.cbPrice.Size = new System.Drawing.Size(136, 28);
             this.cbPrice.TabIndex = 23;
             // 
             // costLabel
             // 
             this.costLabel.AutoSize = true;
-            this.costLabel.Location = new System.Drawing.Point(498, 54);
+            this.costLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costLabel.Location = new System.Drawing.Point(524, 54);
             this.costLabel.Name = "costLabel";
-            this.costLabel.Size = new System.Drawing.Size(38, 16);
+            this.costLabel.Size = new System.Drawing.Size(46, 22);
             this.costLabel.TabIndex = 24;
             this.costLabel.Text = "Preis";
             // 
@@ -157,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(1431, 632);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.cbPrice);

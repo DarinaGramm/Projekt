@@ -32,7 +32,7 @@ namespace Reisebüro_SC
    
     public partial class Reisebüro : Form
     {
-        public static string op;
+        public static string id_button;
         public string GetItemText { get; private set; }
         List<Panel> panelList = new List<Panel>();
        
@@ -54,9 +54,8 @@ namespace Reisebüro_SC
             }
             db.closeConnection();
  
-            MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date` FROM travels WHERE travel_id NOT IN ({booked_travel_ids})", db.getConnection());
+            MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date`, `city` FROM travels WHERE travel_id NOT IN ({booked_travel_ids})", db.getConnection());
             db.openConnection();
-            //MySqlCommand display2 = new MySqlCommand("SELECT `travel_id` FROM clients", db.getConnection());
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
             MySqlDataReader travels = display.ExecuteReader();
@@ -67,21 +66,20 @@ namespace Reisebüro_SC
             while (travels.Read())
             {
                
-                    var hotel = travels.GetString(0);
+                var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
                 var id = travels.GetString(3);
                 var numberPerson = travels.GetString(4);
                 var startDate = travels.GetString(5);
                 var endDate = travels.GetString(6);
+                var city = travels.GetString(7);
                 string[] startDateSplit = startDate.Split(' ');
                 string[] endDateSplit = endDate.Split(' ');
 
-                if (id != op)
-                {
                 Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
-                Label labelPlace = CreateLabel(place, "placeName", new Size(170, 35));
+                Label labelPlace = CreateLabel($"{city + ", " +place}" , "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
@@ -94,18 +92,16 @@ namespace Reisebüro_SC
                 panel.Controls.Add(myButton);
                
 
-                MatchCollection matchedcountries = rg.Matches(place);
-                for (int count = 0; count < matchedcountries.Count; count++)
-                {
-                    placesList.Add(matchedcountries[count].Value);
-                    panel.Name = matchedcountries[count].Value;
+               
+                    placesList.Add(city);
+                    panel.Name = city;
                     numberPersonList.Add(numberPerson);
                     priceList.Add(int.Parse(price));
-                }
+               
 
                 flp.Controls.Add(panel);
                 panelList.Add(panel);
-            }
+            
             }
             
 
@@ -137,7 +133,8 @@ namespace Reisebüro_SC
             {
                 Text = text,
                 Name = name,
-                Size = size
+                Size = size,
+                Font = new Font("Segoe UI Emoji", 8)
             };
 
             return label;
@@ -164,7 +161,8 @@ namespace Reisebüro_SC
                 Text = text,
                 Name = name,
                 Margin = new Padding { Top = 20 },
-                Tag = name
+                Tag = name,
+                Font = new Font("Segoe UI Emoji", 8)
             };
 
 
@@ -240,8 +238,7 @@ namespace Reisebüro_SC
         public void buchungButton_Click(object sender, EventArgs e)
         {
             string customParameter = ((System.Windows.Forms.Button)sender).Tag.ToString();
-           
-            op = customParameter;
+            MessageBox.Show(customParameter);
             Buchung checkout = new Buchung(customParameter);
             checkout.ShowDialog(this);
         }
@@ -277,6 +274,11 @@ namespace Reisebüro_SC
             
             }
             
+        }
+
+        private void number_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

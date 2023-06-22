@@ -40,7 +40,7 @@ namespace Reisebüro_SC
 
             db.closeConnection();
         }*/
-        string op;
+        string id_button;
 
         private void Reserve_Click(object sender, EventArgs e)
            
@@ -53,7 +53,7 @@ namespace Reisebüro_SC
             {
                 DB db = new DB();
                 //this.TravelList.Text
-                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id` ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + op + "')", db.getConnection());
+                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id` ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
 
                 db.openConnection();
 
@@ -79,7 +79,7 @@ namespace Reisebüro_SC
            
             if (optionalParameter != null)
             {
-                op = optionalParameter;
+                id_button = optionalParameter;
    
             }
             
@@ -139,8 +139,17 @@ namespace Reisebüro_SC
         private void button1_Click(object sender, EventArgs e)
         {
           this.Hide();
-        //  Reisebüro   checkout = new Reisebüro();
-          //  checkout.ShowDialog(this);
+       
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Buchung_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
