@@ -160,6 +160,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Bilder - Kopieren\Amari.jpg" />
+    <Content Include="bin\Bilder - Kopieren\AVANI Victoria Falls Resort.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Best Western Hotel President.jpg" />
+    <Content Include="bin\Bilder - Kopieren\booking.ico" />
+    <Content Include="bin\Bilder - Kopieren\Cenit.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Comfort Suites Paradise Island.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Conrad Dubai.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Delphin Deluxe.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Delphin Diva.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Du Lac et Du Parc Grand Resort.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Grupotel Playa de Palma Suites &amp; Spa.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Hilton Hawaiian Village Waikiki Beach Resort.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Hilton Malta.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Holiday Suites Across From Universal Orlando.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Horizon Beach Resort.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Hotel Baía Azul.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Hotel Parque Tropical.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Kempinski Seychelles Resort Baie Lazare.jpg" />
+    <Content Include="bin\Bilder - Kopieren\La Palma Jardin.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Lyttos Beach.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Paradis Palace.jpg" />
+    <Content Include="bin\Bilder - Kopieren\plane.ico" />
+    <Content Include="bin\Bilder - Kopieren\PortoBay Rio de Janeiro.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Royal Decameron Tafoukt Beach.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Royal Palms Beach Hotel.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Terme Helvetia.jpg" />
+    <Content Include="bin\Bilder - Kopieren\The Grand Resort, Hurghada.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Windhoek Country Club Resort.jpg" />
+    <Content Include="bin\Bilder - Kopieren\Yigitalp.jpg" />
     <Content Include="bin\Bilder\Amari.jpg" />
     <Content Include="bin\Bilder\AVANI Victoria Falls Resort.jpg" />
     <Content Include="bin\Bilder\Best Western Hotel President.jpg" />

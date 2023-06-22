@@ -33,10 +33,11 @@ namespace Reisebüro_SC
     {
         public string GetItemText { get; private set; }
         List<Panel> panelList = new List<Panel>();
+
         public void Startpage()
         {
             DB db = new DB();
-            MySqlCommand display = new MySqlCommand("SELECT hotel_name, place, price, travel_id, number_of_persons, start_date, end_date FROM travels", db.getConnection());
+            MySqlCommand display = new MySqlCommand("SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date` FROM travels", db.getConnection());
             db.openConnection();
             string regex = @"^(.*?)\,";
             Regex rg = new Regex(regex);
@@ -47,7 +48,7 @@ namespace Reisebüro_SC
 
             while (travels.Read())
             {
-               
+
                 var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
@@ -65,13 +66,13 @@ namespace Reisebüro_SC
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
                 System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}", buchungButton_Click);
-        
+
                 panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
-               
+
 
                 MatchCollection matchedcountries = rg.Matches(place);
                 for (int count = 0; count < matchedcountries.Count; count++)
@@ -85,6 +86,8 @@ namespace Reisebüro_SC
                 flp.Controls.Add(panel);
                 panelList.Add(panel);
             }
+
+            db.closeConnection();
 
             setComboBox(placesList, cbPlace);
             setComboBox(numberPersonList, cbNP);
@@ -100,9 +103,9 @@ namespace Reisebüro_SC
                 BackColor = Color.White,
                 Size = new Size(200, 268),
                 Tag = number + ',' + dateStart + ',' + dateEnd
-                
+
             };
-            
+
             return panel;
         }
 
@@ -146,10 +149,11 @@ namespace Reisebüro_SC
             return button;
         }
 
-        public void setComboBox(List<string> list, dynamic cb) {
+        public void setComboBox(List<string> list, dynamic cb)
+        {
             cb.Items.Add("Alles");
             list.Sort();
-           
+
             string[] places = list.ToArray();
             for (int i = 0; i < places.Length; i++)
             {
@@ -166,7 +170,7 @@ namespace Reisebüro_SC
                 if (!isDuplicate)
                 {
                     cb.Items.Add(places[i]);
-                   
+
                 }
             }
 
@@ -174,7 +178,7 @@ namespace Reisebüro_SC
         public void setComboBoxPrice(List<int> prices)
         {
             prices.Sort();
-            cbPrice.Items.Add("Alles");
+
             cbPrice.Items.Add("200 - 500");
             cbPrice.Items.Add("500 - 700");
             cbPrice.Items.Add("700 - 1000");
@@ -195,7 +199,8 @@ namespace Reisebüro_SC
             if (priceH >= priceMin && priceH <= priceMax)
             {
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -208,6 +213,23 @@ namespace Reisebüro_SC
             InitializeComponent();
             Startpage();
         }
+        public Reisebüro(string optionalParameter = null)
+        {
+            InitializeComponent();
+            Startpage();
+            // Use the optionalParameter if provided
+            if (optionalParameter != null)
+            {
+
+
+            }
+            else
+            {
+
+            }
+
+            // ... existing initialization code ...
+        }
 
         public void buchungButton_Click(object sender, EventArgs e)
         {
@@ -219,32 +241,33 @@ namespace Reisebüro_SC
 
             string placeSelected = cbPlace.Text;
             string priceSelected = cbPrice.Text;
-            
+
             Panel[] panelArray = panelList.ToArray();
 
             for (int i = 0; i < panelArray.Length; i++)
             {
                 Label price = panelArray[i].Controls.Find("priceName", true).FirstOrDefault() as Label;
-                if (placeSelected == "Alles" && priceSelected == "Alles")
-                {
-                    flp.Controls.AddRange(panelArray);
+                bool isPlaceMatched = panelArray[i].Name == placeSelected;
+                bool isPriceMatched = priceInRange(price.Text, priceSelected);
 
-                }else
-                {
-                if (panelArray[i].Name == placeSelected && priceInRange(price.Text, priceSelected))
+
+                if (isPlaceMatched && isPriceMatched)
                 {
                     flp.Controls.Add(panelArray[i]);
                 }
-                else 
+                else
                 {
                     flp.Controls.Remove(panelArray[i]);
-                   
-                }
+
                 }
             }
 
-            
-            
+            if (cbPlace.Text == "Alles")
+            {
+                flp.Controls.AddRange(panelArray);
+
+            }
+
         }
     }
 }

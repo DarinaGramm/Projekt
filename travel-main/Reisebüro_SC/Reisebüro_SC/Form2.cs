@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Utilities.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -20,7 +22,24 @@ namespace Reisebüro_SC
 {
     public partial class Buchung : Form
     {
-        public Buchung() => InitializeComponent();
+        /*public void ComboBox()
+        {
+            DB db = new DB();
+            MySqlCommand fill = new MySqlCommand("SELECT hotel_name FROM travels", db.getConnection());
+
+            db.openConnection();
+
+            fill.Parameters.AddWithValue("@hotel_name", TravelList.Items);
+
+            MySqlDataReader travels = fill.ExecuteReader();
+
+            while (travels.Read())
+            {
+                TravelList.Text = travels.GetValue(0).ToString();
+            }
+
+            db.closeConnection();
+        }*/
 
         private void Reserve_Click(object sender, EventArgs e)
         {
@@ -31,8 +50,8 @@ namespace Reisebüro_SC
             else
             {
                 DB db = new DB();
-
-                MySqlCommand insert = new MySqlCommand("insert into clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`) values('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "')", db.getConnection());
+                //this.TravelList.Text
+                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id`) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + "')", db.getConnection());
 
                 db.openConnection();
 
@@ -42,6 +61,12 @@ namespace Reisebüro_SC
 
                 MessageBox.Show("Vielen Dank für Ihre Buchung!");
             }
+        }
+
+        public Buchung()
+        {
+            InitializeComponent();
+            //ComboBox();
         }
 
         private void FirstName_Enter(object sender, EventArgs e)
@@ -93,6 +118,12 @@ namespace Reisebüro_SC
                 E_Mail.Text = "Geben Sie Ihre E-Mail-Adresse ein";
                 E_Mail.ForeColor = Color.Gray;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Reisebüro checkout = new Reisebüro("string");
+            checkout.ShowDialog(this);
         }
     }
 }
