@@ -29,11 +29,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Reisebüro_SC
 {
+   
     public partial class Reisebüro : Form
     {
+        public static string op;
         public string GetItemText { get; private set; }
         List<Panel> panelList = new List<Panel>();
-
+       
+       
         public void Startpage()
         {
             DB db = new DB();
@@ -48,7 +51,7 @@ namespace Reisebüro_SC
 
             while (travels.Read())
             {
-
+                
                 var hotel = travels.GetString(0);
                 var place = travels.GetString(1);
                 var price = travels.GetString(2);
@@ -59,6 +62,8 @@ namespace Reisebüro_SC
                 string[] startDateSplit = startDate.Split(' ');
                 string[] endDateSplit = endDate.Split(' ');
 
+                if (id != op)
+                {
                 Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
                 Label labelPlace = CreateLabel(place, "placeName", new Size(170, 35));
@@ -66,13 +71,13 @@ namespace Reisebüro_SC
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
                 System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}", buchungButton_Click);
-
+        
                 panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
-
+               
 
                 MatchCollection matchedcountries = rg.Matches(place);
                 for (int count = 0; count < matchedcountries.Count; count++)
@@ -85,6 +90,7 @@ namespace Reisebüro_SC
 
                 flp.Controls.Add(panel);
                 panelList.Add(panel);
+            }
             }
 
             db.closeConnection();
@@ -105,7 +111,7 @@ namespace Reisebüro_SC
                 Tag = number + ',' + dateStart + ',' + dateEnd
 
             };
-
+            
             return panel;
         }
 
@@ -141,19 +147,20 @@ namespace Reisebüro_SC
             {
                 Text = text,
                 Name = name,
-                Margin = new Padding { Top = 20 }
+                Margin = new Padding { Top = 20 },
+                Tag = name
             };
+
 
             button.Click += clickHandler;
 
             return button;
         }
 
-        public void setComboBox(List<string> list, dynamic cb)
-        {
+        public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             list.Sort();
-
+           
             string[] places = list.ToArray();
             for (int i = 0; i < places.Length; i++)
             {
@@ -170,7 +177,7 @@ namespace Reisebüro_SC
                 if (!isDuplicate)
                 {
                     cb.Items.Add(places[i]);
-
+                   
                 }
             }
 
@@ -199,8 +206,7 @@ namespace Reisebüro_SC
             if (priceH >= priceMin && priceH <= priceMax)
             {
                 return true;
-            }
-            else
+            }else
             {
                 return false;
             }
@@ -213,27 +219,14 @@ namespace Reisebüro_SC
             InitializeComponent();
             Startpage();
         }
-        public Reisebüro(string optionalParameter = null)
-        {
-            InitializeComponent();
-            Startpage();
-            // Use the optionalParameter if provided
-            if (optionalParameter != null)
-            {
-
-
-            }
-            else
-            {
-
-            }
-
-            // ... existing initialization code ...
-        }
+        
 
         public void buchungButton_Click(object sender, EventArgs e)
         {
-            Buchung checkout = new Buchung();
+            string customParameter = ((System.Windows.Forms.Button)sender).Tag.ToString();
+           
+            op = customParameter;
+            Buchung checkout = new Buchung(customParameter);
             checkout.ShowDialog(this);
         }
         private void search_Click(object sender, EventArgs e)
@@ -241,7 +234,7 @@ namespace Reisebüro_SC
 
             string placeSelected = cbPlace.Text;
             string priceSelected = cbPrice.Text;
-
+            
             Panel[] panelArray = panelList.ToArray();
 
             for (int i = 0; i < panelArray.Length; i++)
@@ -250,12 +243,12 @@ namespace Reisebüro_SC
                 bool isPlaceMatched = panelArray[i].Name == placeSelected;
                 bool isPriceMatched = priceInRange(price.Text, priceSelected);
 
-
+               
                 if (isPlaceMatched && isPriceMatched)
                 {
                     flp.Controls.Add(panelArray[i]);
                 }
-                else
+                else 
                 {
                     flp.Controls.Remove(panelArray[i]);
 
@@ -265,9 +258,9 @@ namespace Reisebüro_SC
             if (cbPlace.Text == "Alles")
             {
                 flp.Controls.AddRange(panelArray);
-
+            
             }
-
+            
         }
     }
 }

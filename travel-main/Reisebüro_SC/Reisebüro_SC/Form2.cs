@@ -40,8 +40,10 @@ namespace Reisebüro_SC
 
             db.closeConnection();
         }*/
+        string op;
 
         private void Reserve_Click(object sender, EventArgs e)
+           
         {
             if (string.IsNullOrEmpty(Title.Text) || string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(Surname.Text) || string.IsNullOrEmpty(DateOfBirth.Text) || string.IsNullOrEmpty(TelephoneNumber.Text) || string.IsNullOrEmpty(E_Mail.Text))
             {
@@ -51,7 +53,7 @@ namespace Reisebüro_SC
             {
                 DB db = new DB();
                 //this.TravelList.Text
-                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id`) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + "')", db.getConnection());
+                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id` ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + op + "')", db.getConnection());
 
                 db.openConnection();
 
@@ -67,6 +69,17 @@ namespace Reisebüro_SC
         {
             InitializeComponent();
             //ComboBox();
+        }
+        public Buchung(string optionalParameter = null)
+        {
+            InitializeComponent();
+           
+            if (optionalParameter != null)
+            {
+                op = optionalParameter;
+   
+            }
+            
         }
 
         private void FirstName_Enter(object sender, EventArgs e)
@@ -122,7 +135,7 @@ namespace Reisebüro_SC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Reisebüro checkout = new Reisebüro("string");
+            Reisebüro checkout = new Reisebüro();
             checkout.ShowDialog(this);
         }
     }
