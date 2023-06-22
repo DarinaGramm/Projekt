@@ -238,7 +238,6 @@ namespace Reisebüro_SC
         public void buchungButton_Click(object sender, EventArgs e)
         {
             string customParameter = ((System.Windows.Forms.Button)sender).Tag.ToString();
-            MessageBox.Show(customParameter);
             Buchung checkout = new Buchung(customParameter);
             checkout.ShowDialog(this);
         }
@@ -253,11 +252,8 @@ namespace Reisebüro_SC
             for (int i = 0; i < panelArray.Length; i++)
             {
                 Label price = panelArray[i].Controls.Find("priceName", true).FirstOrDefault() as Label;
-                bool isPlaceMatched = panelArray[i].Name == placeSelected;
-                bool isPriceMatched = priceInRange(price.Text, priceSelected);
-
                
-                if (isPlaceMatched && isPriceMatched)
+                if (panelArray[i].Name == placeSelected && priceInRange(price.Text, priceSelected))
                 {
                     flp.Controls.Add(panelArray[i]);
                 }

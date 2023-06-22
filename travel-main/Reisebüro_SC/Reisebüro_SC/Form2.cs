@@ -52,7 +52,7 @@ namespace Reisebüro_SC
             else
             {
                 DB db = new DB();
-                //this.TravelList.Text
+              
                 MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id` ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
 
                 db.openConnection();
