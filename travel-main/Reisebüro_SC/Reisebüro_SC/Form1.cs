@@ -29,14 +29,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Reisebüro_SC
 {
-   
+
     public partial class Reisebüro : Form
     {
-       
+
         public string GetItemText { get; private set; }
         List<Panel> panelList = new List<Panel>();
-       
-       
+
+
         public void Startpage()
         {
             string booked_travel_ids = "0";
@@ -46,7 +46,8 @@ namespace Reisebüro_SC
             db.openConnection();
             MySqlDataReader bookings = display1.ExecuteReader();
 
-            while (bookings.Read()) {
+            while (bookings.Read())
+            {
                 if (booked_travel_ids != "")
                 {
                     booked_travel_ids += ",";
@@ -54,7 +55,7 @@ namespace Reisebüro_SC
                 booked_travel_ids += bookings.GetString(0);
             }
             db.closeConnection();
- 
+
             MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `city`, `price`, `travel_id`," +
                 $" `number_of_persons`, `start_date`, `end_date`, `country` FROM travels WHERE travel_id NOT IN " +
                 $"({booked_travel_ids})", db.getConnection());
@@ -66,7 +67,7 @@ namespace Reisebüro_SC
 
             while (travels.Read())
             {
-               
+
                 var hotel = travels.GetString(0);
                 var city = travels.GetString(1);
                 var price = travels.GetString(2);
@@ -80,27 +81,27 @@ namespace Reisebüro_SC
 
                 Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
-                Label labelPlace = CreateLabel($"{country + ", " + city}" , "placeName", new Size(170, 35));
+                Label labelPlace = CreateLabel($"{country + ", " + city}", "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
                 System.Windows.Forms.Button myButton = CreateButton("Buchen", $"{id}", buchungButton_Click);
-        
+
                 panel.Controls.Add(pb);
                 panel.Controls.Add(labelHotel);
                 panel.Controls.Add(labelPlace);
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
-               
-                    placesList.Add(country);
-                    panel.Name = country;
-                    numberPersonList.Add(numberPerson);
-                    priceList.Add(int.Parse(price));
-                    flp.Controls.Add(panel);
-                    panelList.Add(panel);
-            
+
+                placesList.Add(country);
+                panel.Name = country;
+                numberPersonList.Add(numberPerson);
+                priceList.Add(int.Parse(price));
+                flp.Controls.Add(panel);
+                panelList.Add(panel);
+
             }
-            
+
 
             db.closeConnection();
 
@@ -120,7 +121,7 @@ namespace Reisebüro_SC
                 Tag = number + ',' + dateStart + ',' + dateEnd
 
             };
-            
+
             return panel;
         }
 
@@ -168,7 +169,8 @@ namespace Reisebüro_SC
             return button;
         }
 
-        public void setComboBox(List<string> list, dynamic cb) {
+        public void setComboBox(List<string> list, dynamic cb)
+        {
             cb.Items.Add("Alles");
             list.Sort();
             string[] places = list.ToArray();
@@ -187,7 +189,7 @@ namespace Reisebüro_SC
                 if (!isDuplicate)
                 {
                     cb.Items.Add(places[i]);
-                   
+
                 }
             }
 
@@ -216,7 +218,8 @@ namespace Reisebüro_SC
             if (priceH >= priceMin && priceH <= priceMax)
             {
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -239,18 +242,21 @@ namespace Reisebüro_SC
         {
             string placeSelected = cbCountry.Text;
             string priceSelected = cbPrice.Text;
-            
+
+
+
+
             Panel[] panelArray = panelList.ToArray();
 
             for (int i = 0; i < panelArray.Length; i++)
             {
                 Label price = panelArray[i].Controls.Find("priceName", true).FirstOrDefault() as Label;
-               
+
                 if (panelArray[i].Name == placeSelected && priceInRange(price.Text, priceSelected))
                 {
                     flp.Controls.Add(panelArray[i]);
                 }
-                else 
+                else
                 {
                     flp.Controls.Remove(panelArray[i]);
 
@@ -260,14 +266,61 @@ namespace Reisebüro_SC
             if (cbCountry.Text == "Alles")
             {
                 flp.Controls.AddRange(panelArray);
-            
+
             }
-            
+
         }
 
         private void Reisebüro_Load(object sender, EventArgs e)
         {
 
         }
+        private void FilterByPrice(string priceRange)
+        {
+            Panel[] panelArray = panelList.ToArray();
+
+            foreach (Panel panel in panelArray)
+            {
+                Label priceLabel = panel.Controls.Find("priceName", true).FirstOrDefault() as Label;
+                string price = priceLabel.Text.Trim('€');
+                int panelPrice = int.Parse(price);
+
+                string[] range = priceRange.Split('-');
+                int minPrice = int.Parse(range[0].Trim());
+                int maxPrice = int.Parse(range[1].Trim());
+
+                if (panelPrice >= minPrice && panelPrice <= maxPrice)
+                {
+                    flp.Controls.Add(panel);
+                }
+                else
+                {
+                    flp.Controls.Remove(panel);
+                }
+            }
+
+        }
+        private void FilterByNumberOfPersons(int numberOfPersons)
+        {
+            Panel[] panelArray = panelList.ToArray();
+
+            foreach (Panel panel in panelArray)
+            {
+                string[] panelInfo = panel.Tag.ToString().Split(',');
+                int panelNumberOfPersons = int.Parse(panelInfo[0]);
+
+                if (panelNumberOfPersons >= numberOfPersons)
+                {
+                    panel.Visible = true;
+                }
+                else
+                {
+                    panel.Visible = false;
+                }
+            }
+        }
+
+
     }
+
 }

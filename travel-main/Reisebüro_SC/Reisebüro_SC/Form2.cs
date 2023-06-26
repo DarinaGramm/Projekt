@@ -15,8 +15,10 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
+using Org.BouncyCastle.Ocsp;
 using Org.BouncyCastle.Utilities.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Reisebüro_SC
 {
@@ -27,35 +29,41 @@ namespace Reisebüro_SC
         private void Reserve_Click(object sender, EventArgs e)
            
         {
+           
             if (string.IsNullOrEmpty(Title.Text) || string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(Surname.Text) || string.IsNullOrEmpty(DateOfBirth.Text) || string.IsNullOrEmpty(TelephoneNumber.Text) || string.IsNullOrEmpty(E_Mail.Text))
             {
                 MessageBox.Show("Bitte füllen Sie alle Felder aus!");
             }
             else
             {
-                DB db = new DB();
-              
-                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, " +
-                    "`name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id`" +
-                    " ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" +
-                    this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text +
-                    "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
+                if (!isValidated(E_Mail.Text, "email") && !isValidated(TelephoneNumber.Text, "telefonnumber") && !isValidated(Title.Text, "title")) {
 
-                db.openConnection();
 
-                insert.ExecuteNonQuery();
 
-                db.closeConnection();
+                    DB db = new DB();
 
-                MessageBox.Show("Vielen Dank für Ihre Buchung!");
+                    MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, " +
+                        "`name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id`" +
+                        " ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" +
+                        this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text +
+                        "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
 
-               
-                Reisebüro checkout = new Reisebüro();
-                checkout.ShowDialog(this);
+                    db.openConnection();
+
+                    insert.ExecuteNonQuery();
+
+                    db.closeConnection();
+
+                    MessageBox.Show("Vielen Dank für Ihre Buchung!");
+
+
+                    Reisebüro checkout = new Reisebüro();
+                    checkout.ShowDialog(this);
+                }
             }
         }
 
-    
+
         public Buchung(string optionalParameter = null)
         {
             InitializeComponent();
@@ -67,6 +75,10 @@ namespace Reisebüro_SC
             }
             
         }
+
+
+
+
 
         private void Titel_Enter(object sender, EventArgs e)
         {
@@ -118,6 +130,55 @@ namespace Reisebüro_SC
                 Surname.ForeColor = Color.Gray;
             }
         }
+
+        bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            bool isValid = Regex.IsMatch(email, pattern);
+
+            return isValid;
+        }
+
+
+        static bool isValidated(string strinG, string type)
+        {
+            switch (type)
+            {
+                case "telefonnumber":
+                    if (strinG.Length != 11)
+                    {
+                        MessageBox.Show("Ungültige Telefonnummer");
+                        return true;
+                    }
+                    break;
+
+                case "email":
+                    string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+                    bool isValid = Regex.IsMatch(strinG, pattern);
+                    if(!isValid)
+                    {
+                        MessageBox.Show("Ungültige E-Mail-Adresse");
+                        return true;
+                    }
+                    break;
+                case "title":
+
+                    string lowerInput = strinG.ToLower();
+
+                    if(lowerInput.StartsWith("frau") || lowerInput.StartsWith("herr") || lowerInput.StartsWith("dr"))
+                    {
+                        return false;
+                    }else
+                    {
+                        MessageBox.Show("Ungültige Anrede");
+                        return true;
+                    }
+                    
+            }
+
+            return false; 
+        }
+
 
         private void E_Mail_Enter(object sender, EventArgs e)
         {
