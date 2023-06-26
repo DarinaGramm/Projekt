@@ -35,7 +35,11 @@ namespace Reisebüro_SC
             {
                 DB db = new DB();
               
-                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, `name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id` ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" + this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text + "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
+                MySqlCommand insert = new MySqlCommand("INSERT INTO clients(`title`, " +
+                    "`name`, `surname`, `date_of_birth`, `telephone_number`, `e-mail`, `travel_id`" +
+                    " ) VALUES('" + this.Title.Text + "','" + this.FirstName.Text + "','" +
+                    this.Surname.Text + "','" + this.DateOfBirth.Text + "','" + this.TelephoneNumber.Text +
+                    "','" + this.E_Mail.Text + "','" + id_button + "')", db.getConnection());
 
                 db.openConnection();
 
@@ -51,10 +55,7 @@ namespace Reisebüro_SC
             }
         }
 
-        public Buchung()
-        {
-            InitializeComponent();
-        }
+    
         public Buchung(string optionalParameter = null)
         {
             InitializeComponent();
@@ -67,9 +68,26 @@ namespace Reisebüro_SC
             
         }
 
+        private void Titel_Enter(object sender, EventArgs e)
+        {
+            if (Title.Text == "Anrede eingeben")
+            {
+                Title.Text = "";
+            }
+        }
+
+        private void Titel_Leave(object sender, EventArgs e)
+        {
+            if (Title.Text == "")
+            {
+                Title.Text = "Anrede eingeben";
+                Title.ForeColor = Color.Gray;
+            }
+        }
+
         private void FirstName_Enter(object sender, EventArgs e)
         {
-            if (FirstName.Text == "Geben Sie Ihren Vornamen ein")
+            if (FirstName.Text == "Vornamen eingeben")
             {
                 FirstName.Text = "";
             }
@@ -79,14 +97,14 @@ namespace Reisebüro_SC
         {
             if (FirstName.Text == "")
             {
-                FirstName.Text = "Geben Sie Ihren Vornamen ein";
+                FirstName.Text = "Vornamen eingeben";
                 FirstName.ForeColor = Color.Gray;
             }
         }
 
         private void Surname_Enter(object sender, EventArgs e)
         {
-            if (Surname.Text == "Geben Sie Ihren Nachnamen ein")
+            if (Surname.Text == "Nachnamen eingeben")
             {
                 Surname.Text = "";
             }
@@ -96,14 +114,14 @@ namespace Reisebüro_SC
         {
             if (Surname.Text == "")
             {
-                Surname.Text = "Geben Sie Ihren Nachnamen ein";
+                Surname.Text = "Nachnamen eingeben";
                 Surname.ForeColor = Color.Gray;
             }
         }
 
         private void E_Mail_Enter(object sender, EventArgs e)
         {
-            if (E_Mail.Text == "Geben Sie Ihre E-Mail-Adresse ein")
+            if (E_Mail.Text == "E-Mail-Adresse eingebe")
             {
                 E_Mail.Text = "";
             }
@@ -113,12 +131,29 @@ namespace Reisebüro_SC
         {
             if (E_Mail.Text == "")
             {
-                E_Mail.Text = "Geben Sie Ihre E-Mail-Adresse ein";
+                E_Mail.Text = "E-Mail-Adresse eingeben";
                 E_Mail.ForeColor = Color.Gray;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TelephoneNumber_Enter(object sender, EventArgs e)
+        {
+            if (TelephoneNumber.Text == "Telefonnummer eingeben")
+            {
+                TelephoneNumber.Text = "";
+            }
+        }
+
+        private void TelephoneNumber_Leave(object sender, EventArgs e)
+        {
+            if (TelephoneNumber.Text == "")
+            {
+                TelephoneNumber.Text = "Telefonnummer eingeben";
+                TelephoneNumber.ForeColor = Color.Gray;
+            }
+        }
+
+        private void backButton(object sender, EventArgs e)
         {
           this.Hide();
        

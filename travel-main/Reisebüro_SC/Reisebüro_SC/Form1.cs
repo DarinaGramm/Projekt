@@ -80,7 +80,7 @@ namespace Reisebüro_SC
 
                 Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
-                Label labelPlace = CreateLabel($"{country + ", " +city}" , "placeName", new Size(170, 35));
+                Label labelPlace = CreateLabel($"{country + ", " + city}" , "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));

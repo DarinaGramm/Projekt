@@ -85,6 +85,8 @@
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(280, 37);
             this.Title.TabIndex = 2;
+            this.Title.Enter += new System.EventHandler(this.Titel_Enter);
+            this.Title.Leave += new System.EventHandler(this.Titel_Leave);
             // 
             // label2
             // 
@@ -176,6 +178,8 @@
             this.TelephoneNumber.Size = new System.Drawing.Size(280, 36);
             this.TelephoneNumber.TabIndex = 10;
             this.TelephoneNumber.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.TelephoneNumber.Enter += new System.EventHandler(this.TelephoneNumber_Enter);
+            this.TelephoneNumber.Leave += new System.EventHandler(this.TelephoneNumber_Leave);
             // 
             // label5
             // 
@@ -242,7 +246,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "zurück";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.backButton);
             // 
             // Buchung
             // 
