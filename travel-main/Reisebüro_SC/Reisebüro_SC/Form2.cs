@@ -36,7 +36,7 @@ namespace Reisebüro_SC
             }
             else
             {
-                if (!isValidated(E_Mail.Text, "email") && !isValidated(TelephoneNumber.Text, "telefonnumber") && !isValidated(Title.Text, "title")) {
+                if (isValidated(E_Mail.Text, "email") && isValidated(TelephoneNumber.Text, "telefonnumber") && isValidated(Title.Text, "title")) {
 
 
 
@@ -148,7 +148,7 @@ namespace Reisebüro_SC
                     if (strinG.Length != 11)
                     {
                         MessageBox.Show("Ungültige Telefonnummer");
-                        return true;
+                        return false;
                     }
                     break;
 
@@ -158,7 +158,7 @@ namespace Reisebüro_SC
                     if(!isValid)
                     {
                         MessageBox.Show("Ungültige E-Mail-Adresse");
-                        return true;
+                        return false;
                     }
                     break;
                 case "title":
@@ -167,22 +167,23 @@ namespace Reisebüro_SC
 
                     if(lowerInput.StartsWith("frau") || lowerInput.StartsWith("herr") || lowerInput.StartsWith("dr"))
                     {
-                        return false;
+                        return true;
                     }else
                     {
                         MessageBox.Show("Ungültige Anrede");
-                        return true;
+                        return false;
                     }
                     
             }
 
-            return false; 
+
+            return true; 
         }
 
 
         private void E_Mail_Enter(object sender, EventArgs e)
         {
-            if (E_Mail.Text == "E-Mail-Adresse eingebe")
+            if (E_Mail.Text == "E-Mail-Adresse eingeben")
             {
                 E_Mail.Text = "";
             }

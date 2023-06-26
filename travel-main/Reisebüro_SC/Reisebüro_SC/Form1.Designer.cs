@@ -53,7 +53,7 @@
             this.flp.AutoScroll = true;
             this.flp.Location = new System.Drawing.Point(36, 162);
             this.flp.Name = "flp";
-            this.flp.Size = new System.Drawing.Size(1532, 1166);
+            this.flp.Size = new System.Drawing.Size(1532, 1240);
             this.flp.TabIndex = 10;
             // 
             // cbCountry
@@ -179,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(1482, 981);
+            this.ClientSize = new System.Drawing.Size(1482, 1055);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.cbPrice);
             this.Controls.Add(this.toLabel);
