@@ -22,24 +22,6 @@ namespace Reisebüro_SC
 {
     public partial class Buchung : Form
     {
-        /*public void ComboBox()
-        {
-            DB db = new DB();
-            MySqlCommand fill = new MySqlCommand("SELECT hotel_name FROM travels", db.getConnection());
-
-            db.openConnection();
-
-            fill.Parameters.AddWithValue("@hotel_name", TravelList.Items);
-
-            MySqlDataReader travels = fill.ExecuteReader();
-
-            while (travels.Read())
-            {
-                TravelList.Text = travels.GetValue(0).ToString();
-            }
-
-            db.closeConnection();
-        }*/
         string id_button;
 
         private void Reserve_Click(object sender, EventArgs e)
@@ -62,6 +44,7 @@ namespace Reisebüro_SC
                 db.closeConnection();
 
                 MessageBox.Show("Vielen Dank für Ihre Buchung!");
+
                
                 Reisebüro checkout = new Reisebüro();
                 checkout.ShowDialog(this);
@@ -71,7 +54,6 @@ namespace Reisebüro_SC
         public Buchung()
         {
             InitializeComponent();
-            //ComboBox();
         }
         public Buchung(string optionalParameter = null)
         {

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reisebüro));
             this.flp = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbPlace = new System.Windows.Forms.ComboBox();
+            this.cbCountry = new System.Windows.Forms.ComboBox();
             this.search = new System.Windows.Forms.Button();
             this.cbNP = new System.Windows.Forms.ComboBox();
             this.country = new System.Windows.Forms.Label();
@@ -47,20 +47,23 @@
             // 
             // flp
             // 
+            this.flp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flp.AutoScroll = true;
             this.flp.Location = new System.Drawing.Point(36, 162);
             this.flp.Name = "flp";
-            this.flp.Size = new System.Drawing.Size(1481, 817);
+            this.flp.Size = new System.Drawing.Size(1532, 1166);
             this.flp.TabIndex = 10;
             // 
-            // cbPlace
+            // cbCountry
             // 
-            this.cbPlace.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPlace.FormattingEnabled = true;
-            this.cbPlace.Location = new System.Drawing.Point(36, 80);
-            this.cbPlace.Name = "cbPlace";
-            this.cbPlace.Size = new System.Drawing.Size(227, 28);
-            this.cbPlace.TabIndex = 11;
+            this.cbCountry.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.Location = new System.Drawing.Point(36, 80);
+            this.cbCountry.Name = "cbCountry";
+            this.cbCountry.Size = new System.Drawing.Size(227, 28);
+            this.cbCountry.TabIndex = 11;
             // 
             // search
             // 
@@ -88,11 +91,11 @@
             // 
             this.country.AutoSize = true;
             this.country.BackColor = System.Drawing.Color.Transparent;
-            this.country.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.country.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.country.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.country.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.country.Location = new System.Drawing.Point(33, 53);
             this.country.Name = "country";
-            this.country.Size = new System.Drawing.Size(68, 22);
+            this.country.Size = new System.Drawing.Size(62, 22);
             this.country.TabIndex = 14;
             this.country.Text = "Länder";
             // 
@@ -100,12 +103,12 @@
             // 
             this.number.AutoSize = true;
             this.number.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.number.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.number.Location = new System.Drawing.Point(323, 55);
             this.number.Name = "number";
             this.number.Size = new System.Drawing.Size(131, 22);
             this.number.TabIndex = 15;
             this.number.Text = "Personenanzahl";
-            this.number.Click += new System.EventHandler(this.number_Click);
             // 
             // contextMenuStrip1
             // 
@@ -117,6 +120,7 @@
             // 
             this.fromLabel.AutoSize = true;
             this.fromLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.fromLabel.Location = new System.Drawing.Point(713, 53);
             this.fromLabel.Name = "fromLabel";
             this.fromLabel.Size = new System.Drawing.Size(41, 22);
@@ -143,6 +147,7 @@
             // 
             this.toLabel.AutoSize = true;
             this.toLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.toLabel.Location = new System.Drawing.Point(1015, 54);
             this.toLabel.Name = "toLabel";
             this.toLabel.Size = new System.Drawing.Size(31, 22);
@@ -162,6 +167,7 @@
             // 
             this.costLabel.AutoSize = true;
             this.costLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.costLabel.Location = new System.Drawing.Point(524, 54);
             this.costLabel.Name = "costLabel";
             this.costLabel.Size = new System.Drawing.Size(46, 22);
@@ -172,8 +178,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(1431, 632);
+            this.BackColor = System.Drawing.Color.Lavender;
+            this.ClientSize = new System.Drawing.Size(1482, 981);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.cbPrice);
             this.Controls.Add(this.toLabel);
@@ -184,13 +190,14 @@
             this.Controls.Add(this.country);
             this.Controls.Add(this.cbNP);
             this.Controls.Add(this.search);
-            this.Controls.Add(this.cbPlace);
+            this.Controls.Add(this.cbCountry);
             this.Controls.Add(this.flp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Reisebüro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reisebüro";
+            this.Load += new System.EventHandler(this.Reisebüro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +205,7 @@
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel flp;
-        private System.Windows.Forms.ComboBox cbPlace;
+        private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.ComboBox cbNP;
         private System.Windows.Forms.Label country;

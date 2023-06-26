@@ -51,8 +51,9 @@
             // label
             // 
             this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Lavender;
             this.label.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label.ForeColor = System.Drawing.Color.Black;
             this.label.Location = new System.Drawing.Point(303, 42);
             this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label.Name = "label";
@@ -64,8 +65,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Lavender;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(199, 174);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -75,6 +77,7 @@
             // 
             // Title
             // 
+            this.Title.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.Location = new System.Drawing.Point(310, 165);
             this.Title.Margin = new System.Windows.Forms.Padding(4);
@@ -86,8 +89,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Lavender;
             this.label2.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(184, 251);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -97,6 +101,7 @@
             // 
             // FirstName
             // 
+            this.FirstName.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstName.Location = new System.Drawing.Point(310, 242);
             this.FirstName.Margin = new System.Windows.Forms.Padding(4);
@@ -110,8 +115,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Lavender;
             this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(673, 251);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -121,6 +127,7 @@
             // 
             // Surname
             // 
+            this.Surname.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Surname.Location = new System.Drawing.Point(812, 242);
             this.Surname.Margin = new System.Windows.Forms.Padding(4);
@@ -134,8 +141,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Lavender;
             this.label4.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(144, 335);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -145,6 +153,7 @@
             // 
             // DateOfBirth
             // 
+            this.DateOfBirth.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.DateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateOfBirth.Location = new System.Drawing.Point(310, 321);
             this.DateOfBirth.Margin = new System.Windows.Forms.Padding(4);
@@ -158,6 +167,7 @@
             // 
             // TelephoneNumber
             // 
+            this.TelephoneNumber.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.TelephoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TelephoneNumber.Location = new System.Drawing.Point(812, 321);
             this.TelephoneNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -170,9 +180,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.AliceBlue;
+            this.label5.BackColor = System.Drawing.Color.Lavender;
             this.label5.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(635, 330);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -182,10 +192,10 @@
             // 
             // Reserve
             // 
-            this.Reserve.BackColor = System.Drawing.Color.AliceBlue;
+            this.Reserve.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Reserve.Cursor = System.Windows.Forms.Cursors.Default;
             this.Reserve.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reserve.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Reserve.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Reserve.Location = new System.Drawing.Point(874, 410);
             this.Reserve.Margin = new System.Windows.Forms.Padding(4);
             this.Reserve.Name = "Reserve";
@@ -198,8 +208,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Lavender;
             this.label6.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(140, 419);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
@@ -209,6 +220,7 @@
             // 
             // E_Mail
             // 
+            this.E_Mail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.E_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.E_Mail.Location = new System.Drawing.Point(310, 405);
             this.E_Mail.Margin = new System.Windows.Forms.Padding(4);
@@ -221,9 +233,9 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.AliceBlue;
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Location = new System.Drawing.Point(25, 42);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 40);
@@ -236,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1245, 620);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Title);

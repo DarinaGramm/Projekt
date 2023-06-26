@@ -32,7 +32,7 @@ namespace Reisebüro_SC
    
     public partial class Reisebüro : Form
     {
-        public static string id_button;
+       
         public string GetItemText { get; private set; }
         List<Panel> panelList = new List<Panel>();
        
@@ -41,7 +41,8 @@ namespace Reisebüro_SC
         {
             string booked_travel_ids = "0";
             DB db = new DB();
-            MySqlCommand display1 = new MySqlCommand("SELECT DISTINCT `travel_id` FROM clients WHERE `travel_id` IS NOT NULL", db.getConnection());
+            MySqlCommand display1 = new MySqlCommand("SELECT DISTINCT `travel_id` FROM clients WHERE `travel_id` IS NOT NULL",
+            db.getConnection());
             db.openConnection();
             MySqlDataReader bookings = display1.ExecuteReader();
 
@@ -54,10 +55,10 @@ namespace Reisebüro_SC
             }
             db.closeConnection();
  
-            MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `place`, `price`, `travel_id`, `number_of_persons`, `start_date`, `end_date`, `city` FROM travels WHERE travel_id NOT IN ({booked_travel_ids})", db.getConnection());
+            MySqlCommand display = new MySqlCommand($"SELECT `hotel_name`, `city`, `price`, `travel_id`," +
+                $" `number_of_persons`, `start_date`, `end_date`, `country` FROM travels WHERE travel_id NOT IN " +
+                $"({booked_travel_ids})", db.getConnection());
             db.openConnection();
-            string regex = @"^(.*?)\,";
-            Regex rg = new Regex(regex);
             MySqlDataReader travels = display.ExecuteReader();
             List<string> placesList = new List<string>();
             List<string> numberPersonList = new List<string>();
@@ -67,19 +68,19 @@ namespace Reisebüro_SC
             {
                
                 var hotel = travels.GetString(0);
-                var place = travels.GetString(1);
+                var city = travels.GetString(1);
                 var price = travels.GetString(2);
                 var id = travels.GetString(3);
                 var numberPerson = travels.GetString(4);
                 var startDate = travels.GetString(5);
                 var endDate = travels.GetString(6);
-                var city = travels.GetString(7);
+                var country = travels.GetString(7);
                 string[] startDateSplit = startDate.Split(' ');
                 string[] endDateSplit = endDate.Split(' ');
 
                 Panel panel = CreatePanel(numberPerson, startDateSplit[0], endDateSplit[0]);
                 Label labelHotel = CreateLabel(hotel, "hotelNAME", new Size(190, 20));
-                Label labelPlace = CreateLabel($"{city + ", " +place}" , "placeName", new Size(170, 35));
+                Label labelPlace = CreateLabel($"{country + ", " +city}" , "placeName", new Size(170, 35));
                 Label labelPrice = CreateLabel($"{price}€", "priceName", new Size(100, 20));
 
                 PictureBox pb = CreatePb("../Bilder/" + hotel + ".jpg", new Size(183, 137));
@@ -91,23 +92,19 @@ namespace Reisebüro_SC
                 panel.Controls.Add(labelPrice);
                 panel.Controls.Add(myButton);
                
-
-               
-                    placesList.Add(city);
-                    panel.Name = city;
+                    placesList.Add(country);
+                    panel.Name = country;
                     numberPersonList.Add(numberPerson);
                     priceList.Add(int.Parse(price));
-               
-
-                flp.Controls.Add(panel);
-                panelList.Add(panel);
+                    flp.Controls.Add(panel);
+                    panelList.Add(panel);
             
             }
             
 
             db.closeConnection();
 
-            setComboBox(placesList, cbPlace);
+            setComboBox(placesList, cbCountry);
             setComboBox(numberPersonList, cbNP);
             setComboBoxPrice(priceList);
 
@@ -174,7 +171,6 @@ namespace Reisebüro_SC
         public void setComboBox(List<string> list, dynamic cb) {
             cb.Items.Add("Alles");
             list.Sort();
-           
             string[] places = list.ToArray();
             for (int i = 0; i < places.Length; i++)
             {
@@ -227,13 +223,11 @@ namespace Reisebüro_SC
         }
 
 
-
         public Reisebüro()
         {
             InitializeComponent();
             Startpage();
         }
-        
 
         public void buchungButton_Click(object sender, EventArgs e)
         {
@@ -243,8 +237,7 @@ namespace Reisebüro_SC
         }
         private void search_Click(object sender, EventArgs e)
         {
-
-            string placeSelected = cbPlace.Text;
+            string placeSelected = cbCountry.Text;
             string priceSelected = cbPrice.Text;
             
             Panel[] panelArray = panelList.ToArray();
@@ -264,7 +257,7 @@ namespace Reisebüro_SC
                 }
             }
 
-            if (cbPlace.Text == "Alles")
+            if (cbCountry.Text == "Alles")
             {
                 flp.Controls.AddRange(panelArray);
             
@@ -272,7 +265,7 @@ namespace Reisebüro_SC
             
         }
 
-        private void number_Click(object sender, EventArgs e)
+        private void Reisebüro_Load(object sender, EventArgs e)
         {
 
         }
